@@ -21,7 +21,6 @@ let seq;
  *
  */
 exports.handler = async (event, context) => {
-  console.log(JSON.stringify(event));
   try {
     if (!seq) {
       await createLogStream(logs, group, stream);

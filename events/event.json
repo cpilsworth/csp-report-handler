@@ -1,62 +1,37 @@
 {
-  "body": "{\"message\": \"hello world\"}",
-  "resource": "/{proxy+}",
-  "path": "/path/to/resource",
-  "httpMethod": "POST",
-  "isBase64Encoded": false,
-  "queryStringParameters": {
-    "foo": "bar"
-  },
-  "pathParameters": {
-    "proxy": "/path/to/resource"
-  },
-  "stageVariables": {
-    "baz": "qux"
-  },
+  "version": "2.0",
+  "routeKey": "POST /_/report/csp",
+  "rawPath": "/_/report/csp",
+  "rawQueryString": "",
   "headers": {
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-    "Accept-Encoding": "gzip, deflate, sdch",
-    "Accept-Language": "en-US,en;q=0.8",
-    "Cache-Control": "max-age=0",
-    "CloudFront-Forwarded-Proto": "https",
-    "CloudFront-Is-Desktop-Viewer": "true",
-    "CloudFront-Is-Mobile-Viewer": "false",
-    "CloudFront-Is-SmartTV-Viewer": "false",
-    "CloudFront-Is-Tablet-Viewer": "false",
-    "CloudFront-Viewer-Country": "US",
-    "Host": "1234567890.execute-api.us-east-1.amazonaws.com",
-    "Upgrade-Insecure-Requests": "1",
-    "User-Agent": "Custom User Agent String",
-    "Via": "1.1 08f323deadbeefa7af34d5feb414ce27.cloudfront.net (CloudFront)",
-    "X-Amz-Cf-Id": "cDehVQoZnx43VYQb9j2-nvCh-9z396Uhbp027Y2JvkCPNLmGJHqlaA==",
-    "X-Forwarded-For": "127.0.0.1, 127.0.0.2",
-    "X-Forwarded-Port": "443",
-    "X-Forwarded-Proto": "https"
+      "accept": "*/*",
+      "content-length": "345",
+      "content-type": "application/json",
+      "host": "sample.execute-api.eu-west-1.amazonaws.com",
+      "user-agent": "curl/7.64.1",
+      "x-amzn-trace-id": "Root=1-5e899a62-26814e789a8ab37867b62150",
+      "x-forwarded-for": "5.70.64.221",
+      "x-forwarded-port": "443",
+      "x-forwarded-proto": "https"
   },
   "requestContext": {
-    "accountId": "123456789012",
-    "resourceId": "123456",
-    "stage": "prod",
-    "requestId": "c6af9ac6-7b61-11e6-9a41-93e8deadbeef",
-    "requestTime": "09/Apr/2015:12:34:56 +0000",
-    "requestTimeEpoch": 1428582896000,
-    "identity": {
-      "cognitoIdentityPoolId": null,
-      "accountId": null,
-      "cognitoIdentityId": null,
-      "caller": null,
-      "accessKey": null,
-      "sourceIp": "127.0.0.1",
-      "cognitoAuthenticationType": null,
-      "cognitoAuthenticationProvider": null,
-      "userArn": null,
-      "userAgent": "Custom User Agent String",
-      "user": null
-    },
-    "path": "/prod/path/to/resource",
-    "resourcePath": "/{proxy+}",
-    "httpMethod": "POST",
-    "apiId": "1234567890",
-    "protocol": "HTTP/1.1"
-  }
+      "accountId": "123412341234",
+      "apiId": "sample",
+      "domainName": "sample.execute-api.eu-west-1.amazonaws.com",
+      "domainPrefix": "sample",
+      "http": {
+          "method": "POST",
+          "path": "/_/report/csp",
+          "protocol": "HTTP/1.1",
+          "sourceIp": "5.70.64.221",
+          "userAgent": "curl/7.64.1"
+      },
+      "requestId": "KgUPegpADoEEJFg=",
+      "routeKey": "POST /_/report/csp",
+      "stage": "$default",
+      "time": "05/Apr/2020:08:44:18 +0000",
+      "timeEpoch": 1586076258969
+  },
+  "body": "{    \"csp-report\": {      \"document-uri\": \"http://example.com/signup.html\",      \"referrer\": \"\",      \"blocked-uri\": \"http://example.com/css/style.css\",      \"violated-directive\": \"style-src cdn.example.com\",      \"original-policy\": \"default-src 'none'; style-src cdn.example.com; report-uri /_/csp-reports\",      \"disposition\": \"report\"    }  }",
+  "isBase64Encoded": false
 }

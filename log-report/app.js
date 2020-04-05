@@ -2,7 +2,7 @@ import CloudWatchLogs from "aws-sdk/clients/cloudwatchlogs";
 
 let logs = new CloudWatchLogs();
 
-const group = "/report/csp";
+const group = process.env.LOG_GROUP;
 const stream = process.env.AWS_LAMBDA_LOG_STREAM_NAME;
 
 /** @type string */

@@ -23,17 +23,25 @@ Resources:
           Properties:
             Path: /_/report/csp
             Method: post
+      Environment:
+        Variables:
+          LOG_GROUP: !Sub "/report/csp/${AWS::StackName}"
+  ReportLogGroup: 
+    Type: AWS::Logs::LogGroup
+    Properties: 
+      LogGroupName: !Sub "/report/csp/${AWS::StackName}"
+      RetentionInDays: 7
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   HelloWorldApi:
-    Description: "API Gateway endpoint URL for the default stage for Hello World function"
+    Description: "API Gateway endpoint URL for the default stage for CSP report function"
     Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/_/report/csp"
   LogReportFunction:
-    Description: "Hello World Lambda Function ARN"
+    Description: "Log Report Lambda Function ARN"
     Value: !GetAtt LogReportFunction.Arn
   LogReportFunctionIamRole:
-    Description: "Implicit IAM Role created for Hello World function"
+    Description: "Implicit IAM Role created for Log Report function"
     Value: !GetAtt LogReportFunctionRole.Arn

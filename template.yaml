@@ -26,6 +26,14 @@ Resources:
       Environment:
         Variables:
           LOG_GROUP: !Sub "/report/csp/${AWS::StackName}"
+
+  FunctionLogGroup:
+    Type: AWS::Logs::LogGroup
+    DependsOn: [ LogReportFunction ]
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${LogReportFunction}
+      RetentionInDays: 7        
+
   ReportLogGroup: 
     Type: AWS::Logs::LogGroup
     Properties: 

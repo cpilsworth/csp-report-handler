@@ -1,0 +1,22 @@
+{
+  "name": "log-report",
+  "version": "1.0.0",
+  "description": "Validates a CSP report reqest and records it to CloudWatch Logs",
+  "main": "index.js",
+  "repository": "https://github.com/awslabs/aws-sam-cli/tree/develop/samcli/local/init/templates/cookiecutter-aws-sam-hello-nodejs",
+  "author": "Chris Pilsworth",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "scripts": {
+    "postinstall": "npx rollup -c",
+    "test": "mocha tests/unit/",
+    "format":"npx prettier --write app.js"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.653.0",
+    "rollup": "^2.3.2",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}

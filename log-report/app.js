@@ -1,6 +1,10 @@
 import CloudWatchLogs from "aws-sdk/clients/cloudwatchlogs";
+import Ajv from "ajv";
+import schema from "./schema.json";
 
 let logs = new CloudWatchLogs();
+const ajv = new Ajv(); // options can be passed, e.g. {allErrors: true}
+const validate = ajv.compile(schema);
 
 const group = process.env.LOG_GROUP;
 const stream = process.env.AWS_LAMBDA_LOG_STREAM_NAME;
@@ -22,11 +26,18 @@ let seq;
  */
 exports.handler = async (event, context) => {
   try {
+    let report = JSON.parse(event.body);
+    if (!validate(report)) {
+      console.log(validate.errors);
+      throw Error("Error validating event");
+    }
+
     if (!seq) {
       await createLogStream(logs, group, stream);
     }
 
-    const result = await logEvent(logs, group, stream, seq, event.body);
+    let reportEvent = JSON.stringify(report);
+    const result = await logEvent(logs, group, stream, seq, reportEvent);
     seq = result.nextSequenceToken;
 
     return {

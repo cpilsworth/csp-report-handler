@@ -1,5 +1,7 @@
 .aws-sam
 samconfig.toml
+# rollup output js
+log-report/index.js
 
 # Created by https://www.gitignore.io/api/osx,node,linux,windows
 

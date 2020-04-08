@@ -18,7 +18,7 @@ Resources:
       Handler: index.handler
       Runtime: nodejs12.x
       Events:
-        HelloWorld:
+        LogReport:
           Type: HttpApi # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlesshttpapi
           Properties:
             Path: /_/report/csp
@@ -44,7 +44,7 @@ Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  HelloWorldApi:
+  CspReportApi:
     Description: "API Gateway endpoint URL for the default stage for CSP report function"
     Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/_/report/csp"
   LogReportFunction:

@@ -13,7 +13,9 @@
     "postinstall": "npx rollup -c",
     "pretest": "npx rollup -c",
     "test": "mocha tests/unit/",
-    "format": "npx prettier --write app.js"
+    "format": "npx prettier --write app.js",
+    "test:serve": "npx serve"
+
   },
   "devDependencies": {
     "@rollup/plugin-json": "^4.0.2",

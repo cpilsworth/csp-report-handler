@@ -1,0 +1,14 @@
+{
+  "public": "tests/integration",
+  "headers": [
+    {
+      "source": "index.html",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; img-src https://*; report-uri https://rqpfw2mvhf.execute-api.eu-west-1.amazonaws.com/_/report/csp"
+        }
+      ]
+    }
+  ]
+}

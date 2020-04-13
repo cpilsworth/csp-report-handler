@@ -26,7 +26,8 @@ let seq;
  */
 exports.handler = async (event, context) => {
   try {
-    let report = JSON.parse(event.body);
+    let report = getBody(event);
+    console.log(report);
     if (!validate(report)) {
       console.log(validate.errors);
       throw Error("Error validating event");
@@ -87,6 +88,22 @@ async function logEvent(logs, group, stream, seq, event) {
   if (seq) {
     params = { ...params, sequenceToken: seq };
   }
-  console.log(params);
   return logs.putLogEvents(params).promise();
+}
+
+/**
+ * Parses the body as JSON, Decodes from base64 if necessary.
+ * @param {*} event request event
+ */
+function getReport(event) {
+  let body = event.isBase64Encoded ? base64Decode(event.body) : event.body;
+  return JSON.parse(body);
+}
+
+/**
+ * Decode a base64 value to a utf8 string
+ * @param {string} value base64 value to decode
+ */
+function base64Decode(value) {
+  return Buffer.from(value, "base64").toString("utf8");
 }

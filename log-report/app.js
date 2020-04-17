@@ -26,7 +26,7 @@ let seq;
  */
 exports.handler = async (event, context) => {
   try {
-    let report = getBody(event);
+    let report = getReport(event);
     console.log(report);
     if (!validate(report)) {
       console.log(validate.errors);
@@ -43,6 +43,9 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: 204,
+      headers: {
+        "Content-Type": "text/plain",
+      },
       body: "",
     };
   } catch (err) {

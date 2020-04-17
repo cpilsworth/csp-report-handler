@@ -1,6 +1,6 @@
 # csp-report-collector
 
-![Node.js CI](https://github.com/cpilsworth/csp-report-handler/workflows/Node.js%20CI/badge.svg)
+![log-report-lamdba build](https://github.com/cpilsworth/csp-report-handler/workflows/Node.js%20CI/badge.svg)
 This project provides a api endpoint to recieve the Content Security Policy (CSP) violation reports sent by browsers.
 
 - log-report - Lambda handler that validates payload and sends the event to CloudWatch Logs.

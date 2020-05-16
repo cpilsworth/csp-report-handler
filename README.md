@@ -1,15 +1,24 @@
-# csp-report-collector
+# CSP Report Handler
 
 ![log-report-lamdba build](https://github.com/cpilsworth/csp-report-handler/workflows/Node.js%20CI/badge.svg)
+
 This project provides a api endpoint to recieve the Content Security Policy (CSP) violation reports sent by browsers.
 
-- log-report - Lambda handler that validates payload and sends the event to CloudWatch Logs.
-- events - Invocation events that you can use to invoke the function.
-- log-report/tests - Unit tests for the application code. 
-- template.yaml - A template that defines the application's AWS resources.
+An AWS HTTP API Gateway is created in your own account using a [SAM](https://docs.aws.amazon.com/serverless-application-model/) template.  The API receives the [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) [violation reports](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP#Sample_violation_report) sent automatically by the browser to the [report-uri](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP#Enabling_reporting) endpoint referenced in the CSP header.  
+
+When the report is received, it is validated against a [schema](log-report/schema.json), the json is logged in a CloudWatch Logs group that is retained for 7 days (by default).
+
+- [log-report](log-report) - Lambda handler that validates payload and sends the event to CloudWatch Logs.
+- [events](events) - Invocation events that you can use to invoke the function.
+- [log-report/tests](log-report/tests/unit) - Unit tests for the application code. 
+- [template.yaml](template.yaml) - A template that defines the application's AWS resources.
 
 The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
 
+## Pricing
+At the time of writing [HTTP API calls pricing](https://aws.amazon.com/api-gateway/pricing/#HTTP_APIs) is $1 per million for the first 300 million requests. $0.9 for each million after that.  
+
+Report events are stored in CloudWatch Logs, which has 5Gb of ingestion/storage in the free tier.  Further details of [pricing here](https://aws.amazon.com/cloudwatch/pricing/). 
 
 ## Deploy the csp report collector
 

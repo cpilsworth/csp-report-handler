@@ -20,7 +20,7 @@ At the time of writing [HTTP API calls pricing](https://aws.amazon.com/api-gatew
 
 Report events are stored in CloudWatch Logs, which has 5Gb of ingestion/storage in the free tier.  Further details of [pricing here](https://aws.amazon.com/cloudwatch/pricing/). 
 
-## Deploy the csp report collector
+## Deploy the CSP Report Handler
 
 The Serverless Application Model Command Line Interface (SAM CLI) is an extension of the AWS CLI that adds functionality for building and testing Lambda applications. It uses Docker to run your functions in an Amazon Linux environment that matches Lambda. It can also emulate your application's build environment and API.
 

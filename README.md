@@ -16,7 +16,7 @@ When the report is received, it is validated against a [schema](log-report/schem
 The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
 
 ## Pricing
-At the time of writing [HTTP API calls pricing](https://aws.amazon.com/api-gateway/pricing/#HTTP_APIs) is $1 per million for the first 300 million requests. $0.9 for each million after that.  
+This template costs nothing, but you'll pay for the resources used.  At the time of writing [HTTP API calls pricing](https://aws.amazon.com/api-gateway/pricing/#HTTP_APIs) is $1 per million for the first 300 million requests. $0.9 for each million after that.  
 
 Report events are stored in CloudWatch Logs, which has 5Gb of ingestion/storage in the free tier.  Further details of [pricing here](https://aws.amazon.com/cloudwatch/pricing/). 
 

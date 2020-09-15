@@ -15,13 +15,13 @@
     "test": "mocha tests/unit/",
     "format": "npx prettier --write app.js",
     "test:serve": "npx serve"
-
   },
   "devDependencies": {
     "@rollup/plugin-json": "^4.0.2",
     "aws-sdk": "^2.653.0",
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
-    "rollup": "^2.3.2"
+    "rollup": "^2.3.2",
+    "lodash": ">=4.17.19"
   }
 }
